@@ -1,0 +1,19 @@
+@import '~material-components-web/material-components-web.scss'; 
+
+@import "@material/animation/variables";
+@import "@material/elevation/mixins";
+
+body {
+    color: gray;
+}
+
+.my-card {
+    @include mdc-elevation(2);
+    @include mdc-elevation-transition;
+    width: 50%;
+    margin: 10px auto 10px auto;
+}
+
+.my-card:hover {
+    @include mdc-elevation(8);
+}
