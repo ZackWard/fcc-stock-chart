@@ -1,7 +1,6 @@
 // Set up websockets
 import * as websockets from "./websockets";
 
-import * as mdc from "material-components-web";
 var Vue = require('vue');
 import { store } from "./store";
 import App from "./components/App.vue";
@@ -19,6 +18,3 @@ new Vue({
     store,
     render: h => h(App)
 });
-
-// Initialize our Material Components
-mdc.autoInit();

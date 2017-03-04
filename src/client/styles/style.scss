@@ -1,19 +1,161 @@
+$mdc-theme-primary: dodgerblue;
+
 @import '~material-components-web/material-components-web.scss'; 
 
 @import "@material/animation/variables";
 @import "@material/elevation/mixins";
 
-body {
-    color: gray;
+#loading-screen {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    opacity: .90;
 }
 
-.my-card {
-    @include mdc-elevation(2);
-    @include mdc-elevation-transition;
-    width: 50%;
-    margin: 10px auto 10px auto;
+/****** Spinner CSS by Tobias Ahlin (@tobiasahlin): https://github.com/tobiasahlin/SpinKit ******/
+.spinner {
+  width: 75px;
+  height: 75px;
+  background-color: dodgerblue;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
 
-.my-card:hover {
-    @include mdc-elevation(8);
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+.mdc-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#chart .mdc-card__primary {
+    background-color: dodgerblue;
+}
+
+#chart .mdc-card__primary h1,
+#chart .mdc-card__primary h2 {
+    color: ghostwhite;
+}
+
+.mdc-card svg {
+    min-height: 250px;
+    max-height: 700px;
+    max-width: 900px;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay {
+    fill-opacity: 0;
+}
+
+.chart-timeline {
+    stroke: black;
+    stroke-dasharray: 1px;
+    stroke-width: 1px;
+}
+
+.hidden {
+    stroke: none;
+    fill: none;
+}
+
+.tooltip-hidden {
+    display: none;
+}
+
+.tooltip-visible {
+    display: inline;
+}
+
+#chart-tooltip {
+    @include mdc-elevation(4);
+    position: absolute;
+    background: white;
+    border-radius: 2px;
+    opacity: 1;
+    min-width: 200px;
+    text-align: left;
+}
+
+#chart-tooltip p {
+    margin-top: 0px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    background: dodgerblue;
+    color: ghostwhite;
+}
+
+#stock-tools {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+#stock-tools div {
+    flex: 0 1 100%;
+}
+
+#stock-tools button {
+    margin: 5px;
+}
+
+#add-stock {
+    text-align: center;
+}
+
+#stock-list {
+    text-align: center;
+}
+
+#filter-control {
+    margin-top: 20px;
+}
+
+.valign-center {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+footer {
+    text-align: center;
+}
+
+@media only screen and (min-width: 600px) {
+    #stock-app {
+        width: 80%;
+        margin: 20px auto 0px auto;
+    }
+
+    #stock-tools div {
+        flex-basis: 50%;
+    }
 }

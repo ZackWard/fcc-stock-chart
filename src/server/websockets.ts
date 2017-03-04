@@ -1,6 +1,6 @@
 import * as http from "http";
 import * as socketio from "socket.io";
-import * as db from "./db";
+import * as quandl from "./quandl";
 
 var state = {
     currentStocks: [],
@@ -18,7 +18,8 @@ export function setup(app) {
         socket.emit('current_stocks', state.currentStocks);
 
         socket.on('add_stock', function (symbol) {
-            var firstPromise = db.getHistory(symbol, new Date(2016, 0, 0))
+            // var firstPromise = db.getHistory(String(symbol).toUpperCase().substr(0, 5))
+            var firstPromise = quandl.getHistory(String(symbol).substr(0, 5).toUpperCase())
             .then((history) => {
                 state.currentStocks.push(history);
                 io.emit('stock_added', history);

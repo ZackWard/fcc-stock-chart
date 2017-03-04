@@ -1,9 +1,11 @@
 <template>
     <div id="stock-app">
-        <p>Vue.js!</p>
-        <p>{{ globalMessage }}</p>
-        <p>Counter: {{ counter }}</p>
         <chart></chart>
+        <template v-if="loading">
+            <div id="loading-screen">
+                <div class="spinner"></div>
+            </div>
+        </template>
     </div>
 </template>
 
@@ -15,19 +17,15 @@
             'chart': Chart
         },
         computed: {
-            globalMessage () {
-                return this.$store.state.message;
+            stocks: function () {
+                return this.$store.state.stocks;
             },
-            counter () {
-                return this.$store.getters.numberOfStocks;
+            loading: function () {
+                return this.$store.state.loading;
             }
         }
     };
 </script>
 
 <style>
-    #stock-app {
-        width: 80%;
-        margin: 20px auto 0px auto;
-    }
 </style>

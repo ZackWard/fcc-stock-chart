@@ -20,7 +20,7 @@ var clientEntry = {
             },
             {
                 test: /\.vue$/,
-                use: 'vue-loader',
+                use: 'vue-loader'
             },
             {
                 test: /\.scss$/,

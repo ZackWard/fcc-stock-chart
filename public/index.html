@@ -2,10 +2,28 @@
 <html class="mdc-typography">
   <head>
     <title>FCC Chart the Stock Market App</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="static/styles.css">
   </head>
   <body>
+    
+    <!-- The tooltip div needs to be outside of the app so that it can be absolutely positioned based on the pageX and pageY values from d3.js -->
+    <div id="chart-tooltip" class="tooltip-hidden"></div>
+
     <div id="my-app"></div>
+
+    <div class="mdc-snackbar"
+        aria-live="assertive"
+        aria-atomic="true"
+        aria-hidden="true">
+        <div class="mdc-snackbar__text"></div>
+        <div class="mdc-snackbar__action-wrapper">
+            <button type="button" class="mdc-button mdc-snackbar__action-button"></button>
+        </div>
+    </div>
+    <footer>
+      <small>Built by <a href="https://www.zackward.net">Zack Ward</a>. Data from <a href="https://www.quandl.com/">Quandl</a>. Source on <a href="https://github.com/ZackWard/fcc-stock-chart">GitHub</a>.</small>
+    </footer>
     <script src="static/bundle.js"></script>
   </body>
 </html>

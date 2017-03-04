@@ -1,7 +1,8 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const http = require("http");
 const socketio = require("socket.io");
-const db = require("./db");
+const quandl = require("./quandl");
 var state = {
     currentStocks: [],
     socketServer: null
@@ -13,7 +14,8 @@ function setup(app) {
         socket.join('stocks');
         socket.emit('current_stocks', state.currentStocks);
         socket.on('add_stock', function (symbol) {
-            var firstPromise = db.getHistory(symbol, new Date(2016, 0, 0))
+            // var firstPromise = db.getHistory(String(symbol).toUpperCase().substr(0, 5))
+            var firstPromise = quandl.getHistory(String(symbol).substr(0, 5).toUpperCase())
                 .then((history) => {
                 state.currentStocks.push(history);
                 io.emit('stock_added', history);
