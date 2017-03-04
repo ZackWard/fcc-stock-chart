@@ -1968,7 +1968,7 @@ var socketio = __webpack_require__(66);
 
 // Set up our client websocket connection
 
-var wsUrl = 'ws://' + window.location.host;
+var wsUrl = '//' + window.location.host;
 
 var socket = exports.socket = socketio(wsUrl);
 

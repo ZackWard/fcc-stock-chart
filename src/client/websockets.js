@@ -3,7 +3,7 @@ const socketio = require('socket.io-client');
 
 // Set up our client websocket connection
 
-let wsUrl = 'ws://' + window.location.host;
+let wsUrl = '//' + window.location.host;
 
 export const socket = socketio(wsUrl);
 
